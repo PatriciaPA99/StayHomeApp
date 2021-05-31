@@ -1,0 +1,119 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <p>{{message}}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<html>
+    <br>
+    <!-- Section: Rental Order begin -->
+    <h1>Rental Order</h1>
+    <!-- Form: Rental Order begin -->
+    <h3>Add</h3>
+    <form action="/add_rental_order" method = 'POST'>
+        <input type = "int" name = "memberNo" placeholder = "Member No">
+        <input type = "date" name = "dateRented" placeholder = "Date Rented">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Rental Order finishes -->
+    <!-- List: Rental Orders begin -->
+    <h3>Rental orders</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Rental No</td>
+                <td>Member No</td>
+                <td>Date Rented</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rental_order in rental_orders %}
+                    <tr>
+                        <td>{{ rental_order.0 }}</td>
+                        <td>{{ rental_order.1 }}</td>
+                        <td>{{ rental_order.2 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Rental Orders finishes -->
+    <!-- Section: Rental orders finishes -->
+    <br>
+    <br>
+    <!-- Section: Copy Rent begin -->
+    <h1>Copy Rent</h1>
+    <!-- Form: Copy Rent begin -->
+    <h3>Add</h3>
+    <form action="/add_can_rent" method = 'POST'>
+        <input type = "int" name = "rentalNo" placeholder = "Rental No">
+        <input type = "int" name = "catalogNo" placeholder = "Catalog No">
+        <input type = "int" name = "copyNo" placeholder = "Copy No">
+        <input type = "date" name = "dateReturned" placeholder = "Date Returned">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Copy Rent finishes -->
+    <!-- List: Copy Rent begin -->
+    <h3>Copy rents</h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Rental No</td>
+                <td>Catalog No</td>
+                <td>Copy No</td>
+                <td>Date Returned</td>
+                <td>Update</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for can_rent in can_rents %}
+                    <tr>
+                        <td>{{ can_rent.0 }}</td>
+                        <td>{{ can_rent.1 }}</td>
+                        <td>{{ can_rent.2 }}</td>
+                        <td>{{ can_rent.3 }}</td>
+                        <td>
+                            <a href = "/edit/rentalNo-{{ can_rent.0 }}/catalogNo-{{ can_rent.1 }}/copyNo-{{ can_rent.2 }}">Edit</a>
+                        </td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Copy Rent begin -->
+    <!-- Section: Copy Rent finishes -->
+    <br>
+    <br>
+    <!-- Section: Video Copies begin -->
+    <h1>Video Copy</h1>
+    <!-- List: Video Copies begin -->
+    <h3>Video Copies </h3>
+    <table>
+        <thead>
+            <tr>
+                <td>Catalog No</td>
+                <td>Copy No</td>
+                <td>State</td>
+                <td>Branch No</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video_copy in video_copies %}
+                    <tr>
+                        <td>{{ video_copy.0 }}</td>
+                        <td>{{ video_copy.1 }}</td>
+                        <td>{{ video_copy.2 }}</td>
+                        <td>{{ video_copy.3 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Video Copies begin -->
+    <!-- Section: Video Copies finishes -->
+</html>
+
+
+
