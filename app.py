@@ -1,4 +1,4 @@
-# Python app to manipulate a MySQL database through a HTML interface
+# Python app to manipulate an MySQL database through a HTML interface
 # E5 - Bases de Datos 
 # Last update: 02 june 2021
 # Patricia Palula Aguilar
