@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <!-- Section: Video begin -->
+    <h1>StayHome App</h1>
+    <a href="/">Home Page</a><br>
+    <p></p>
+    <h2>Video</h2>
+    <!-- Form: Video begin -->
+    <p></p>
+    <h4>Add</h4>
+    <form action="/add_video" method = 'POST'>
+        <input type = "string" name = "title" placeholder = "Title">
+        <input type = "string" name = "category" placeholder = "category">
+        <input type = "int" name = "year" placeholder = "year">
+        <input type = "int" name = "directorNo" placeholder = "directorNo">
+        <input type = "int" name = "dailyRental" placeholder = "dailyRental">
+        <input type = "int" name = "cost" placeholder = "cost">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Video finishes -->
+    
+    <!-- List: Videos begin -->
+    <p></p>
+    <h4>Videos</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Catalog No</td>
+                <td>Title</td>
+                <td>Category</td>
+                <td>Year</td>
+                <td>Director No</td>
+                <td>Daily Rental</td>
+                <td>Cost</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video in videos %}
+                    <tr>
+                        <td>{{ video.0 }}</td>
+                        <td>{{ video.1 }}</td>
+                        <td>{{ video.2 }}</td>
+                        <td>{{ video.3 }}</td>
+                        <td>{{ video.4 }}</td>
+                        <td>{{ video.5 }}</td>
+                        <td>{{ video.6 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Videos finishes -->
+    <!-- Section: Videos finishes -->
+    <br>
+    <br>
+{% endblock%}

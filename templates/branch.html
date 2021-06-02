@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <!-- Section: Branch begin -->
+    <h1>StayHome App</h1>
+    <a href="/">Home Page</a><br>
+    <p></p>
+    <h2>Branch</h2>
+    <!-- Form: Branch begin -->
+    <p></p>
+    <h4>Add</h4>
+    <form action="/add_branch" method = 'POST'>
+        <input type = "int" name = "staffNo" placeholder = "staffNo">
+        <input type = "int" name = "phoneNum" placeholder = "phoneNum">
+        <input type = "string" name = "street" placeholder = "street">
+        <input type = "string" name = "city" placeholder = "city">
+        <input type = "string" name = "state" placeholder = "state">
+        <input type = "int" name = "zipCode" placeholder = "zipCode">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Branch finishes -->
+    
+    <!-- List: Branchs begin -->
+    <p></p>
+    <h4>Branches</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Branch No</td>
+                <td>Staff No</td>
+                <td>Phone Num</td>
+                <td>Street</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip Code</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for branch in branches %}
+                    <tr>
+                        <td>{{ branch.0 }}</td>
+                        <td>{{ branch.1 }}</td>
+                        <td>{{ branch.2 }}</td>
+                        <td>{{ branch.3 }}</td>
+                        <td>{{ branch.4 }}</td>
+                        <td>{{ branch.5 }}</td>
+                        <td>{{ branch.6 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Branchs finishes -->
+    <!-- Section: Branchs finishes -->
+    <br>
+    <br>
+{% endblock%}

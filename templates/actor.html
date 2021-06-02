@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <!-- Section: Actor begin -->
+    <h1>StayHome App</h1>
+    <a href="/">Home Page</a><br>
+    <p></p>
+    <h2>Actor</h2>
+    <!-- Form: Actor begin -->
+    <p></p>
+    <h4>Add</h4>
+    <form action="/add_actor" method = 'POST'>
+        <input type = "string" name = "firstName" placeholder = "First Name">
+        <input type = "string" name = "lastName" placeholder = "Last Name">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Actor finishes -->
+    
+    <!-- List: Actors begin -->
+    <p></p>
+    <h4>Actors</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Actor No</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for actor in actors %}
+                    <tr>
+                        <td>{{ actor.0 }}</td>
+                        <td>{{ actor.1 }}</td>
+                        <td>{{ actor.2 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Actors finishes -->
+    <!-- Section: Actors finishes -->
+    <br>
+    <br>
+{% endblock%}

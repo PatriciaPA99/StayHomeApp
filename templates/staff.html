@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <!-- Section: Staff begin -->
+    <h1>StayHome App</h1>
+    <a href="/">Home Page</a><br>
+    <p></p>
+    <h2>Staff</h2>
+    <!-- Form: Staff begin -->
+    <p></p>
+    <h4>Add</h4>
+    <form action="/add_staff" method = 'POST'>
+        <input type = "string" name = "firstName" placeholder = "First Name">
+        <input type = "string" name = "lastName" placeholder = "Last Name">
+        <input type = "int" name = "branchNo" placeholder = "Branch No">
+        <input type = "string" name = "position" placeholder = "Positon">
+        <input type = "int" name = "salary" placeholder = "Salary">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Staff finishes -->
+    
+    <!-- List: Staffs begin -->
+    <p></p>
+    <h4>Staffs</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Staff No</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Branch No</td>
+                <td>Position</td>
+                <td>Salary</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for staff in staffs %}
+                    <tr>
+                        <td>{{ staff.0 }}</td>
+                        <td>{{ staff.1 }}</td>
+                        <td>{{ staff.2 }}</td>
+                        <td>{{ staff.3 }}</td>
+                        <td>{{ staff.4 }}</td>
+                        <td>{{ staff.5 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Staffs finishes -->
+    <!-- Section: Staffs finishes -->
+    <br>
+    <br>
+{% endblock%}

@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<h1>Edit Copy Rent</h1>
+<form  action="/update/rentalNo-{{ copy_rent.0 }}/catalogNo-{{ copy_rent.1 }}/copyNo-{{ copy_rent.2 }}" method = 'POST'>
+    <input type = "text" name = "rentalNo" placeholder = "Rental No" value = "{{ copy_rent.0 }}" disabled>
+    <input type = "text" name = "catologNo" placeholder = "Catalog No" value = "{{ copy_rent.1 }}" disabled>
+    <input type = "text" name = "copyNo" placeholder = "Copy No" value = "{{ copy_rent.2 }}" disabled>
+    <input type = "date" name = "dateReturned" placeholder = "Date Returned" value = "{{ copy_rent.3 }}">
+    <button type = "submit">
+        Save
+    </button>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <!-- Section: Rental Order begin -->
+    <h1>StayHome App</h1>
+    <a href="/">Home Page</a><br>
+    <br>
+    <h2>Rental Order</h2>
+    <!-- Form: Rental Order begin -->
+    <p></p>
+    <h4>Add</h4>
+    <form action="/add_rental_order" method = 'POST'>
+        <input type = "int" name = "memberNo" placeholder = "Member No">
+        <input type = "date" name = "dateRented" placeholder = "Date Rented">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Rental Order finishes -->
+    <!-- List: Rental Orders begin -->
+    <p></p>
+    <h4>Rental orders</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Rental No</td>
+                <td>Member No</td>
+                <td>Date Rented</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rental_order in rental_orders %}
+                    <tr>
+                        <td>{{ rental_order.0 }}</td>
+                        <td>{{ rental_order.1 }}</td>
+                        <td>{{ rental_order.2 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Rental Orders finishes -->
+    <!-- Section: Rental orders finishes -->
+    <br>
+    <br>
+    <!-- Section: Copy Rent begin -->
+    <h2>Copy Rent</h2>
+    <!-- Form: Copy Rent begin -->
+    <p></p>
+    <h4>Add</h4>
+    <form action="/add_copy_rent" method = 'POST'>
+        <input type = "int" name = "rentalNo" placeholder = "Rental No">
+        <input type = "int" name = "catalogNo" placeholder = "Catalog No">
+        <input type = "int" name = "copyNo" placeholder = "Copy No">
+        <input type = "date" name = "dateReturned" placeholder = "Date Returned">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Copy Rent finishes -->
+    <!-- List: Copy Rent begin -->
+    <p></p>
+    <h4>Copy rents</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Rental No</td>
+                <td>Catalog No</td>
+                <td>Copy No</td>
+                <td>Date Returned</td>
+                <td>Update</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for copy_rent in copy_rents %}
+                    <tr>
+                        <td>{{ copy_rent.0 }}</td>
+                        <td>{{ copy_rent.1 }}</td>
+                        <td>{{ copy_rent.2 }}</td>
+                        <td>{{ copy_rent.3 }}</td>
+                        <td>
+                            <a href = "/edit_copy_rent/rentalNo-{{ copy_rent.0 }}/catalogNo-{{ copy_rent.1 }}/copyNo-{{ copy_rent.2 }}">Edit</a>
+                        </td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Copy Rent begin -->
+    <!-- Section: Copy Rent finishes -->
+    <br>
+    <br>
+{% endblock%}
+
+

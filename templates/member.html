@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <!-- Section: Member begin -->
+    <h1>StayHome App</h1>
+    <a href="/">Home Page</a><br>
+    <p></p>
+    <h2>Member</h2>
+    <!-- Form: Member begin -->
+    <p></p>
+    <h4>Add</h4>
+    <form action="/add_member" method = 'POST'>
+        <input type = "string" name = "firstName" placeholder = "First Name">
+        <input type = "string" name = "lastName" placeholder = "Last Name">
+        <input type = "int" name = "branchNo" placeholder = "Branch No">
+        <input type = "string" name = "street" placeholder = "Street">
+        <input type = "string" name = "city" placeholder = "City">
+        <input type = "string" name = "state" placeholder = "State">
+        <input type = "int" name = "zipCode" placeholder = "Zip Code">
+        <input type = "date" name = "regDate" placeholder = "Registration Date">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Member finishes -->
+    <!-- List: Members begin -->
+    <p></p>
+    <h4>Members</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Member No</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Branch No</td>
+                <td>Street</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip Code</td>
+                <td>Registration Date</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+                    <tr>
+                        <td>{{ member.0 }}</td>
+                        <td>{{ member.1 }}</td>
+                        <td>{{ member.2 }}</td>
+                        <td>{{ member.3 }}</td>
+                        <td>{{ member.4 }}</td>
+                        <td>{{ member.5 }}</td>
+                        <td>{{ member.6 }}</td>
+                        <td>{{ member.7 }}</td>
+                        <td>{{ member.8 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Members finishes -->
+    <!-- Section: Members finishes -->
+    <br>
+    <br>
+{% endblock%}

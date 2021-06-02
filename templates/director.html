@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <br>
+    <!-- Section: Director begin -->
+    <h1>StayHome App</h1>
+    <a href="/">Home Page</a><br>
+    <p></p>
+    <h2>Director</h2>
+    <!-- Form: Director begin -->
+    <h4>Add</h4>
+    <form action="/add_director" method = 'POST'>
+        <input type = "string" name = "firstName" placeholder = "First Name">
+        <input type = "string" name = "lastName" placeholder = "Last Name">
+        <button type = "submit">
+            Save
+        </button>
+    </form>
+    <!-- Form: Director finishes -->
+    
+    <!-- List: Directors begin -->
+    <p></p>
+    <h4>Directors</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>Director No</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for director in directors %}
+                    <tr>
+                        <td>{{ director.0 }}</td>
+                        <td>{{ director.1 }}</td>
+                        <td>{{ director.2 }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- List: Directors finishes -->
+    <!-- Section: Directors finishes -->
+    <br>
+    <br>
+{% endblock%}
