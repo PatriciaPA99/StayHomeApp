@@ -12,4 +12,6 @@ html:
 # to open the virtual environment
 # venv\script\activate
 #
+py -3 -m venv .venv
+.venv\scripts\activate
 #####################################################################
